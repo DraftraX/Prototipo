@@ -19,64 +19,34 @@ import {
   PlusOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { API_URL } from "../utils/ApiRuta";
 
 const { Title, Paragraph } = Typography;
 
 const Perfil = () => {
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token");
-  let username;
-  if (token) {
-    const tokenParts = token.split(".");
-    const encodedPayload = tokenParts[1];
-    const decodedPayload = atob(encodedPayload);
-    const parsedPayload = JSON.parse(decodedPayload);
+  // Simulando el token y el nombre de usuario
+  const token = "simulatedToken";
+  const username = "simulatedUser";
 
-    username = parsedPayload.sub;
-  } else {
-    console.log("No se encontró ningún token en el almacenamiento local.");
-  }
-
+  // Datos de prueba
   const [userData, setUserData] = useState({
-    id: "",
-    name: "",
-    lastname: "",
-    address: "",
-    phone: "",
-    fotoPerfil: "",
-    cargoid: "",
+    id: "1",
+    name: "Eduardo Diego",
+    lastname: "Sanchez Vidaurre",
+    address: "Jr. Los Pinos 1223, Lima",
+    phone: "+51 929 455 391",
+    fotoPerfil:
+      "https://scontent.flim19-1.fna.fbcdn.net/v/t1.18169-9/15977424_1407659015944818_4808128750698341533_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeEYEjNjdHNWKpcPLyfkZ3IX0zt4U9LkBfbTO3hT0uQF9tyr7ejH7aHBWo8s69-fzzbV-HNy3ndpTenxu8tXhuMZ&_nc_ohc=CtbRpmVU4_cQ7kNvgEmFcZL&_nc_zt=23&_nc_ht=scontent.flim19-1.fna&oh=00_AYC_y1M8JEPDqvIOjG6j9_eLcVA31i2nTJjXZB7eyNGWug&oe=673F3DB0",
+    cargoid: "Desarrollador Web",
   });
 
+  // El useEffect se mantiene, pero ahora no hace la llamada a la API.
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(
-          API_URL + `/usuario/verusuarioporusername/${username}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-        } else {
-          console.error("Error al obtener los datos del usuario");
-        }
-      } catch (error) {
-        console.error("Error al obtener los datos del usuario:", error);
-      }
-    };
-
-    if (username) {
-      fetchUserData();
-    }
-  }, [username, token]);
+    // Aquí podrías hacer algo cuando el componente se monte
+    // Por ejemplo, podrías configurar los datos del usuario desde un archivo local o similar.
+    // setUserData(mockUserData); // Aquí podrías asignar datos simulados si lo deseas
+  }, []);
 
   return (
     <div style={{ backgroundColor: "#f0f2f5", padding: "40px" }}>
@@ -92,7 +62,7 @@ const Perfil = () => {
             <Avatar
               size={100}
               icon={<UserOutlined />}
-              src="https://static.eldiario.es/clip/ab74aa95-3656-424c-8ca1-dce590aabb97_16-9-discover-aspect-ratio_default_0.jpg"
+              src={userData.fotoPerfil}
               style={{ marginBottom: "16px" }}
             />
             <Title level={4}>{userData.name}</Title>

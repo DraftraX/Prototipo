@@ -1,38 +1,21 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Card, Row, Col, message } from "antd";
-import { API_URL } from "../../../utils/ApiRuta";
 const { Item } = Form;
 
 export default function RestablecerContrasena() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
 
-  const handleSubmit = async () => {
-    const requestBody = {
-      mailTo: email,
-      username: username,
-    };
-
-    try {
-      const response = await fetch(API_URL + "/change-password/enviarcorreo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      if (response.ok) {
-        message.success("Correo enviado con éxito.");
-      } else {
-        message.error("Error al enviar el correo.");
-      }
-    } catch (error) {
-      console.error("Error al enviar el correo:", error);
-      message.error(
-        "Hubo un problema al enviar el correo. Por favor, inténtalo de nuevo más tarde."
-      );
+  const handleSubmit = () => {
+    // Validar que los campos no estén vacíos
+    if (!email || !username) {
+      message.error("Por favor, complete todos los campos.");
+      return;
     }
+
+    // Simular el envío del correo
+    message.success("Correo enviado con éxito.");
+    // Aquí podrías redirigir al usuario o limpiar el formulario
   };
 
   return (

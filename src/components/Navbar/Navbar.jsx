@@ -94,6 +94,15 @@ export default function Navbar() {
       ),
     },
     {
+      key: "reportes",
+      label: (
+        <a href="/reportes" className="flex items-center">
+          <UserOutlined className="mr-2" />
+          Reportes
+        </a>
+      ),
+    },
+    {
       key: "logout",
       label: (
         <a onClick={handleLogout} className="flex items-center">

@@ -21,7 +21,7 @@ import VistaGrados from "./modules/GradosyTItulos/VistaGrados";
 import VerGrado from "./modules/GradosyTItulos/VerGrado";
 import VistaPosgrados from "./modules/GradosyTItulos/VistaPosgrados";
 import VerPosgrado from "./modules/GradosyTItulos/VerPosgrado";
-
+import Reportes from "./components/ReportePrueba/Reporte";
 import RutasProtegidas from "./utils/RutasProtegida";
 
 function App() {
@@ -58,6 +58,7 @@ function App() {
           <Route path="/posgrados" element={<VistaPosgrados />} />
           <Route path="/verposgrado" element={<VerPosgrado />} />
           <Route path="/createposgrado" element={<CrearPosgrado />} />
+          <Route path="/reportes" element={<Reportes />} />
 
           {/* Rutas protegidas */}
           {/* <Route element={<RutasProtegidas />}>
