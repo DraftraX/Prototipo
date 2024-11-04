@@ -33,7 +33,7 @@ const countDocumentTypes = (data) => {
   return Object.entries(counts).map(([type, count]) => ({ type, count }));
 };
 
-const Reportes = () => {
+const ReportesDocumentos = () => {
   const columns = [
     {
       title: "ID",
@@ -132,4 +132,4 @@ const Reportes = () => {
   );
 };
 
-export default Reportes;
+export default ReportesDocumentos;

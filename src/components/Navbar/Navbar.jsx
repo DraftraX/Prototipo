@@ -1,5 +1,9 @@
 import { Menu, Dropdown, Layout, message } from "antd";
-import { UserOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  ArrowLeftOutlined,
+  SnippetsOutlined,
+} from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../utils/ApiRuta";
 import { navigation } from "./Data";
@@ -94,19 +98,35 @@ export default function Navbar() {
       ),
     },
     {
-      key: "reportes",
+      key: "Reporte Visitantes",
       label: (
-        <a href="/reportes" className="flex items-center">
-          <UserOutlined className="mr-2" />
-          Reportes
+        <a
+          onClick={() => handleNavigation("/reportes-visitantes", "Visitantes")}
+          className="flex items-center"
+        >
+          <SnippetsOutlined className="mr-2" />
+          Reporte Visitantes
         </a>
       ),
     },
     {
+      key: "Reporte Documentos",
+      label: (
+        <a
+          onClick={() => handleNavigation("/reportes-documentos", "Documentos")}
+          className="flex items-center"
+        >
+          <SnippetsOutlined className="mr-2" />
+          Reporte Documentos
+        </a>
+      ),
+    },
+
+    {
       key: "logout",
       label: (
-        <a onClick={handleLogout} className="flex items-center">
-          <ArrowLeftOutlined className="mr-2" />
+        <a href="/login" onClick={handleLogout} className="flex items-center">
+          <ArrowLeftOutlined className="mr-2 " />
           Cerrar sesión
         </a>
       ),
@@ -130,7 +150,7 @@ export default function Navbar() {
         {isAuthenticated && (
           <Dropdown
             overlay={
-              <Menu items={userMenuItems} className="bg-white text-black" />
+              <Menu items={userMenuItems} className="bg-white text-blacks" />
             }
             trigger={["click"]}
           >
