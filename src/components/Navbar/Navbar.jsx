@@ -138,7 +138,11 @@ export default function Navbar() {
       <Header className="flex justify-between items-center bg-green-500 p-4">
         <div className="logo">
           <Link to="/paginaprincipal">
-            <img src="../../unsm.png" alt="Your Company" className="h-16" />
+            <img
+              src="https://unsm.edu.pe/wp-content/uploads/2022/03/escudologotipo_unsm_2021_lateral_principal_siglas_PNG-370x142.png"
+              alt="Your Company"
+              className="h-16"
+            />
           </Link>
         </div>
         <Menu
